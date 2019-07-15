@@ -1,6 +1,6 @@
 # file-upload
 
-##Open terminal, change to file-upload directory
+## Open terminal, change to file-upload directory
 
 1) mkdir uploads
 
