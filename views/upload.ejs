@@ -1,0 +1,38 @@
+<html>
+
+<head>
+   <title>Upload</title>
+   <script src="/js/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+
+   <div ng-controller="myCtrl">
+      <input type="file" name="file" />
+      <button ng-click="uploadFile()">upload me</button>
+   </div>
+
+   <script>
+      var myApp = angular.module('myApp', []);
+      myApp.controller('myCtrl', function ($scope, $http) {
+         $scope.uploadFile = function () {
+            var file = document.getElementsByName("file")[0].files[0];
+            var fd = new FormData();
+            fd.append('file', file);
+            $http({
+               url: '/upload',
+               method: 'post',
+               data: fd,
+               headers: { 'Content-Type': undefined }
+            }).then((res) => {
+               alert(res.data);
+            }, (res) => {
+               alert(res.data);
+            });
+         };
+      });
+   </script>
+
+</body>
+
+</html>
